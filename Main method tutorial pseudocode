@@ -1,0 +1,25 @@
+Load startup screen with difficulty options and tutorial checkbox checked by default.
+
+IF (TUTORIAL IS CHECKED) {
+  Begin tutorial:
+  Avatar says she wants to make money by selling cookies.
+  Go to stand screen.
+  Show customer with 1 sugar cookie in thought bubble.
+  User clicks desired cookie, and that cookie shows up on the plate?
+
+  Go to profits screen.
+  Show predetermined values based on difficulty.
+  
+  instanciate click variable as false.
+  WHILE (CLICK IS FALSE) {
+  
+    Have the user click on the correct profit bubble.
+    
+    IF (CLICK IS FALSE) {
+      Tell user to try again.
+      Warn them.
+    }
+    
+  }
+  Give user predetermined money.
+}
