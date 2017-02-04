@@ -1,0 +1,22 @@
+package edu.oakland.helper;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class PanelBuilder extends JPanel {
+    
+    // CONSTRUCTOR
+    public PanelBuilder(int left, int top, int width, int height) {
+        setBounds(left, top, width, height);
+    }
+    
+    // CHANGE THE BACKGROUND COLOR OF THE PANEL
+    public void recolor(Color color) {
+        setBackground(color);
+    }
+    
+    // MOVE THE PANEL IF NECESSARY
+    void relocate(int left, int top, int width, int height) {
+        setBounds(left, top, width, height);
+    }
+}
