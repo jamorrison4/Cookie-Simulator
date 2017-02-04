@@ -1,0 +1,23 @@
+package edu.oakland.helper;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class LabelBuilder extends JLabel {
+
+    // CONSTRUCTOR
+    public LabelBuilder(int left, int top, int width, int height) {
+        setBounds(left, top, width, height);
+    }
+
+    // ADD AN IMAGE TO THE LABEL
+    public void addImage(String path) {
+        ImageIcon newImage = new ImageIcon(path);
+        setIcon(newImage);
+    }
+
+    // MOVE THE LABEL IF NECESSARY
+    void relocate(int left, int top, int width, int height) {
+        setBounds(left, top, width, height);
+    }
+}
