@@ -1,0 +1,33 @@
+package edu.oakland.helper;
+
+import java.awt.*;
+import javax.swing.*;
+
+public class CookieSim {
+    
+    // VARIABLES NEED TO BE PUBLIC SO THAT THEY CAN BE ACCESSED FROM THE BUTTONBUILDER CLASS
+    public static FrameBuilder frame;
+    public static PanelBuilder backGround;
+    public static LabelBuilder devil;
+    public static ButtonBuilder toggle;
+
+    public static void main(String[] args) {
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        frame = new FrameBuilder("Cookie Simulator"); // CREATE WINDOW WITH TITLE "COOKIE SIMULATOR"
+        
+        backGround = new PanelBuilder(5, 5, 64, 64); // CREATE NEW PANEL AND SET ITS LOCATION. PARAMETERS: LEFT POSITION, TOP POSITION, WIDTH, HEIGHT
+        backGround.recolor(Color.blue); // RECOLOR THE BACKGROUND OF THE PANEL
+        
+        devil = new LabelBuilder(5, 5, 64, 64); // CREATE NEW LABEL AND SET ITS LOCATION. PARAMETERS: LEFT, TOP, WIDTH, HEIGHT
+        devil.addImage("src/devil.gif"); // ADD AN IMAGE TO THE LABEL FROM A PATH (NOW I AM USING A RANDOM IMAGE THAT I ADDED TO THE SRC FOLDER)
+        
+        toggle = new ButtonBuilder("Next", 5, 72, 64, 32); // CREATE NEW BUTTON AND SET THE TEXT AND LOCATION.
+        toggle.addToggleBackgroundAction(); // ADD ACTION WHEN CLICKED (SEE BUTTONBUILDER CLASS AND LOOK FOR THE addToggleBackgroundAction METHOD)
+        toggle.addToggleDevilAction(); // MULTIPLE ACTIONS CAN BE ASSIGNED TO A SINGLE BUTTON
+        
+        frame.add(toggle); // ADD THE BUTTON TO THE FRAME
+        frame.add(devil); // ADD THE LABEL (THE IMAGE) TO THE FRAME
+        frame.add(backGround); // ADD THE PANEL TO THE FRAME
+        frame.setVisible(true); // SHOW THE FRAME
+    }
+}
