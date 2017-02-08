@@ -6,7 +6,7 @@ import javax.swing.*;
 public class FrameBuilder extends JFrame {
     public FrameBuilder(String title) {
         setTitle(title); // THE TITLE DISPLAYED AT THE TOP OF THE WINDOW
-        setSize(800, 400); // THE SIZE OF OUR PROGRAM WINDOW
+        setSize(800, 622); // THE SIZE OF OUR PROGRAM WINDOW
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         setLayout(null); // ABSOLUTE POSITIONING SO THAT WE CAN OVERLAY CONTAINTERS (JLABELS, JBUTTONS, ETC.) EASILY
     }
