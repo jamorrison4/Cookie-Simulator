@@ -12,12 +12,17 @@ public class LabelBuilder extends JLabel {
 
     // ADD AN IMAGE TO THE LABEL
     public void addImage(String path) {
-        ImageIcon newImage = new ImageIcon(path);
+        ImageIcon newImage = createNewImage(path);
         setIcon(newImage);
+    }
+    
+    public ImageIcon createNewImage(String path) {
+        java.net.URL imageURL = getClass().getResource(path);
+        return new ImageIcon(imageURL);
     }
 
     // MOVE THE LABEL IF NECESSARY
-    void relocate(int left, int top, int width, int height) {
+    public void relocate(int left, int top, int width, int height) {
         setBounds(left, top, width, height);
     }
 }
