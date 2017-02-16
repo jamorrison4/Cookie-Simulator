@@ -4,29 +4,53 @@ import java.awt.*;
 import javax.swing.*;
 
 public class CookieSim {
-    // VARIABLES NEED TO BE PUBLIC SO THAT THEY CAN BE ACCESSED FROM THE BUTTONBUILDER CLASS
+    
+    // Components
+    // Main Menu
     public static FrameBuilder frame;
-    public static PanelBuilder backGround;
-    public static LabelBuilder devil;
-    public static ButtonBuilder toggle;
-
+    public static LabelBuilder mainMenuBackground;
+    public static ButtonBuilder easyButton;
+    public static ButtonBuilder mediumButton;
+    public static ButtonBuilder hardButton;
+    
+    // Selling Menu
+    public static LabelBuilder sellingMenuBackground;
+    public static LabelBuilder sign1;
+    
+    // Variables
+    public static int difficulty; // 1 = easy; 2 = medium; 3 = hard
+    
     public static void main(String[] args) {
-        JFrame.setDefaultLookAndFeelDecorated(true);
-        frame = new FrameBuilder("Cookie Simulator"); // CREATE WINDOW WITH TITLE "COOKIE SIMULATOR"
+        frame = new FrameBuilder("Cookie Simulator");
+   
+        mainMenuBackground = new LabelBuilder(0, 0, 800, 600);
+        mainMenuBackground.addImage("/images/mainMenu.png");
         
-        backGround = new PanelBuilder(5, 5, 64, 64); // CREATE NEW PANEL AND SET ITS LOCATION. PARAMETERS: LEFT POSITION, TOP POSITION, WIDTH, HEIGHT
-        backGround.recolor(Color.blue); // RECOLOR THE BACKGROUND OF THE PANEL
+        easyButton = new ButtonBuilder(38, 442, 221, 111);
+        easyButton.addImage("/images/easy.png");
+        easyButton.easyButtonClick();
+        easyButton.goToSellingMenu();
         
-        devil = new LabelBuilder(5, 5, 64, 64); // CREATE NEW LABEL AND SET ITS LOCATION. PARAMETERS: LEFT, TOP, WIDTH, HEIGHT
-        devil.addImage("/images/devil.gif"); // ADD AN IMAGE TO THE LABEL FROM A PATH (NOW I AM USING A RANDOM IMAGE THAT I ADDED TO THE SRC FOLDER)
+        mediumButton = new ButtonBuilder(294, 442, 220, 111);
+        mediumButton.addImage("/images/medium.png");
         
-        toggle = new ButtonBuilder("Next", 5, 72, 64, 32); // CREATE NEW BUTTON AND SET THE TEXT AND LOCATION.
-        toggle.addToggleBackgroundAction(); // ADD ACTION WHEN CLICKED (SEE BUTTONBUILDER CLASS AND LOOK FOR THE addToggleBackgroundAction METHOD)
-        toggle.addToggleDevilAction(); // MULTIPLE ACTIONS CAN BE ASSIGNED TO A SINGLE BUTTON
+        hardButton = new ButtonBuilder(546, 442, 220, 111);
+        hardButton.addImage("/images/hard.png");
         
-        frame.add(toggle); // ADD THE BUTTON TO THE FRAME
-        frame.add(devil); // ADD THE LABEL (THE IMAGE) TO THE FRAME
-        frame.add(backGround); // ADD THE PANEL TO THE FRAME
-        frame.setVisible(true); // SHOW THE FRAME
+        sellingMenuBackground = new LabelBuilder(0, 0, 800, 600);
+        sellingMenuBackground.addImage("/images/sellingMenu.png");
+        sellingMenuBackground.setVisible(false);
+
+        sign1 = new LabelBuilder(250, 0, 300, 75);
+        sign1.addImage("/images/sign1.png");
+        sign1.setVisible(false);
+        
+        frame.add(sign1);
+        frame.add(sellingMenuBackground);
+        frame.add(hardButton);
+        frame.add(mediumButton);
+        frame.add(easyButton);
+        frame.add(mainMenuBackground);
+        frame.setVisible(true);
     }
 }
