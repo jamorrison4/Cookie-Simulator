@@ -5,42 +5,54 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class ButtonBuilder extends JButton {
+    
+    public ButtonBuilder(int left, int top, int width, int height) {
+        setBounds(left, top, width, height);
+        setOpaque(false);
+        setContentAreaFilled(false);
+        setBorderPainted(false);
+    }
 
     // CONSTRUCTOR
     public ButtonBuilder(String text, int left, int top, int width, int height) {
         setText(text);
         setBounds(left, top, width, height);
     }
+    
+    public void addImage(String path) {
+        ImageIcon newImage = createNewImage(path);
+        setIcon(newImage);
+    }
+    
+    public ImageIcon createNewImage(String path) {
+        java.net.URL imageURL = getClass().getResource(path);
+        return new ImageIcon(imageURL);
+    }
 
     // MOVE THE BUTTON IF NECESSARY
     public void relocate(int left, int top, int width, int height) {
         setBounds(left, top, width, height);
     }
-
-    // TOGGLES THE VISIBILITY OF THE BACKGROUND WHEN THE BUTTON IS CLICKED
-    public void addToggleBackgroundAction() {
+    
+    public void goToSellingMenu() {
         addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (CookieSim.backGround.isVisible()) {
-                    CookieSim.backGround.setVisible(false);
-                } else {
-                    CookieSim.backGround.setVisible(true);
-                }
+                CookieSim.easyButton.setVisible(false);
+                CookieSim.mediumButton.setVisible(false);
+                CookieSim.hardButton.setVisible(false);
+                CookieSim.mainMenuBackground.setVisible(false);
+                
+                CookieSim.sellingMenuBackground.setVisible(true);
+                CookieSim.sign1.setVisible(true);
             }
         });
     }
-    
-    // TOGGLES THE VISIBILITY OF THE DEVIL WHEN THE BUTTON IS CLICKED
-    public void addToggleDevilAction() {
+
+    public void easyButtonClick() {
         addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (CookieSim.devil.isVisible()) {
-                    CookieSim.devil.setVisible(false);
-                } else {
-                    CookieSim.devil.setVisible(true);
-                }
+                CookieSim.difficulty = 1;
             }
         });
     }
 }
-
