@@ -8,6 +8,8 @@ public class LabelBuilder extends JLabel {
     // CONSTRUCTOR
     public LabelBuilder(int left, int top, int width, int height) {
         setBounds(left, top, width, height);
+        setHorizontalAlignment(SwingConstants.CENTER);
+        setVerticalAlignment(SwingConstants.CENTER);
     }
 
     // ADD AN IMAGE TO THE LABEL
@@ -15,7 +17,7 @@ public class LabelBuilder extends JLabel {
         ImageIcon newImage = createNewImage(path);
         setIcon(newImage);
     }
-    
+
     public ImageIcon createNewImage(String path) {
         java.net.URL imageURL = getClass().getResource(path);
         return new ImageIcon(imageURL);
