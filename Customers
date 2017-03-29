@@ -1,0 +1,395 @@
+package cookie;
+
+import java.util.Random;
+
+public class Customers {
+    
+    private int diff;     // 0 - EASY, 1 - MEDIUM, 2 - HARD
+    private int round;    // 1-12
+    private int location; // 0 - START, 1 - 1st UPGRADE, 2 - 2nd UPGRADE
+    private int sign;     // 0 - START, 1 - 1st UPGRADE, 2 - 2nd UPGRADE
+    
+    private int lowerC = 0;        // lower bound of customers
+    private int upperC = 0;        // upper bound of customers
+    private int[] rangeC = {0, 0}; // total range of customers
+    private int totalC = 0;        // random grab of customers, given range
+    
+    // RUNS AND RETURNS RANDOM CUSTOMERS
+    public int getCustomers(int difficulty, int roundNum, int locationUp, int signUp) {
+        diff = difficulty;
+        round = roundNum;
+        location = locationUp;
+        sign = signUp;
+        setCustomers();
+        return totalC;
+    }
+    
+    // LOWER BOUND
+    public void setLowerCustomers() {
+        switch(round) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                switch(sign) {
+                    case 0:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 4;
+                                break;
+                            case 1:
+                                lowerC = 4;
+                                break;
+                            case 2:
+                                lowerC = 3;
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 5;
+                                break;
+                            case 1:
+                                lowerC = 5;
+                                break;
+                            case 2:
+                                lowerC = 4;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 6;
+                                break;
+                            case 1:
+                                lowerC = 6;
+                                break;
+                            case 2:
+                                lowerC = 5;
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+                switch(sign) {
+                    case 0:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 3;
+                                break;
+                            case 1:
+                                lowerC = 3;
+                                break;
+                            case 2:
+                                lowerC = 2;
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 4;
+                                break;
+                            case 1:
+                                lowerC = 4;
+                                break;
+                            case 2:
+                                lowerC = 5;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 5;
+                                break;
+                            case 1:
+                                lowerC = 5;
+                                break;
+                            case 2:
+                                lowerC = 4;
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+                switch(sign) {
+                    case 0:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 2;
+                                break;
+                            case 1:
+                                lowerC = 2;
+                                break;
+                            case 2:
+                                lowerC = 1;
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 3;
+                                break;
+                            case 1:
+                                lowerC = 3;
+                                break;
+                            case 2:
+                                lowerC = 2;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch(diff) {
+                            case 0:
+                                lowerC = 4;
+                                break;
+                            case 1:
+                                lowerC = 4;
+                                break;
+                            case 2:
+                                lowerC = 3;
+                                break;
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+    
+    // UPPER BOUND
+    public void setUpperCustomers() {
+        switch(round) {
+            case 1:
+            case 2:
+            case 3:
+                switch(location) {
+                    case 0:
+                        switch(diff) {
+                            case 0:
+                                upperC = 6;
+                                break;
+                            case 1:
+                                upperC = 5;
+                                break;
+                            case 2:
+                                upperC = 4;
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(diff) {
+                            case 0:
+                                upperC = 8;
+                                break;
+                            case 1:
+                                upperC = 7;
+                                break;
+                            case 2:
+                                upperC = 6;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch(diff) {
+                            case 0:
+                                upperC = 10;
+                                break;
+                            case 1:
+                                upperC = 9;
+                                break;
+                            case 2:
+                                upperC = 8;
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case 4:
+            case 5:
+            case 6:
+                switch(location) {
+                    case 0:
+                        switch(diff) {
+                            case 0:
+                                upperC = 5;
+                                break;
+                            case 1:
+                                upperC = 4;
+                                break;
+                            case 2:
+                                upperC = 3;
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(diff) {
+                            case 0:
+                                upperC = 7;
+                                break;
+                            case 1:
+                                upperC = 6;
+                                break;
+                            case 2:
+                                upperC = 5;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch(diff) {
+                            case 0:
+                                upperC = 9;
+                                break;
+                            case 1:
+                                upperC = 8;
+                                break;
+                            case 2:
+                                upperC = 7;
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case 7:
+            case 8:
+            case 9:
+                switch(location) {
+                    case 0:
+                        switch(diff) {
+                            case 0:
+                                upperC = 4;
+                                break;
+                            case 1:
+                                upperC = 3;
+                                break;
+                            case 2:
+                                upperC = 2;
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(diff) {
+                            case 0:
+                                upperC = 6;
+                                break;
+                            case 1:
+                                upperC = 5;
+                                break;
+                            case 2:
+                                upperC = 4;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch(diff) {
+                            case 0:
+                                upperC = 8;
+                                break;
+                            case 1:
+                                upperC = 7;
+                                break;
+                            case 2:
+                                upperC = 6;
+                                break;
+                        }
+                        break;
+                }
+                break;
+            case 10:
+            case 11:
+            case 12:
+                switch(location) {
+                    case 0:
+                        switch(diff) {
+                            case 0:
+                                upperC = 3;
+                                break;
+                            case 1:
+                                upperC = 2;
+                                break;
+                            case 2:
+                                upperC = 1;
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(diff) {
+                            case 0:
+                                upperC = 5;
+                                break;
+                            case 1:
+                                upperC = 4;
+                                break;
+                            case 2:
+                                upperC = 3;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        switch(diff) {
+                            case 0:
+                                upperC = 7;
+                                break;
+                            case 1:
+                                upperC = 6;
+                                break;
+                            case 2:
+                                upperC = 5;
+                                break;
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+    
+    // RANGE
+    public void setCustomerRange() {
+        setLowerCustomers();
+        setUpperCustomers();
+        if(lowerC > upperC) {
+            rangeC[0] = lowerC;
+            rangeC[1] = lowerC;
+        } else {
+            rangeC[0] = lowerC;
+            rangeC[1] = upperC;
+        }
+    }
+    
+    // RANDOM AMOUNT OF CUSTOMERS
+    public void setCustomers() {
+        setCustomerRange();
+        Random rand = new Random();
+        int randNum = rand.nextInt((rangeC[1] - rangeC[0]));
+        totalC = randNum + rangeC[0];
+    }
+    
+    // RUNS AND RETURNS LOWER BOUND
+    public int getLowerCustomers() {
+        setLowerCustomers();
+        return lowerC;
+    }
+    
+    // RUNS AND RETURNS UPPER BOUND
+    public int getUpperCustomers() {
+        setUpperCustomers();
+        return upperC;
+    }
+    
+    // RUNS AND RETURNS RANGE
+    public int[] getCustomerRange() {
+        setCustomerRange();
+        return rangeC;
+    }
+}
